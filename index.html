@@ -53,6 +53,7 @@
       <h3 id="composeHeading">✍️ Leave a note</h3>
       <input type="text" id="authorInput" placeholder="Your name">
       <textarea id="messageInput" rows="4" placeholder="Write your farewell message... 🧡"></textarea>
+      <div class="char-counter" id="charCounter">0 / 20</div>
       <div class="actions">
         <button class="action-btn" id="emojiToggle" onclick="toggleEmoji()">😊</button>
         <button class="pin-btn" id="pinBtn" onclick="pinNote()" disabled>Pin it! 📌</button>
@@ -92,6 +93,20 @@
         <button class="cancel-edit-btn" onclick="closeReplyModal()">Cancel</button>
         <button class="save-reply-btn" id="saveReplyBtn" onclick="submitReply()" disabled>Reply ↩</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="reply-overlay hidden" id="shortMsgOverlay">
+  <div class="reply-panel">
+    <div class="reply-header">
+      <span>✏️ That's a short note!</span>
+      <button onclick="closeShortMsg()">✕</button>
+    </div>
+    <p class="short-msg-text">Your message is under 20 characters. A few more words make a farewell feel warmer 🧡</p>
+    <div class="reply-form-actions">
+      <button class="cancel-edit-btn" onclick="closeShortMsg()">Add more ✍️</button>
+      <button class="save-reply-btn" onclick="confirmShortMsg()">Pin anyway 📌</button>
     </div>
   </div>
 </div>

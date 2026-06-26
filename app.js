@@ -399,9 +399,35 @@ function validateForm(){
   const a=document.getElementById('authorInput').value.trim();
   const m=document.getElementById('messageInput').value.trim();
   document.getElementById('pinBtn').disabled=!a||!m;
+  const cc=document.getElementById('charCounter');
+  if(cc){
+    cc.textContent=m.length+' / '+MIN_MESSAGE_LEN;
+    cc.classList.toggle('ok',m.length>=MIN_MESSAGE_LEN);
+  }
+}
+
+const MIN_MESSAGE_LEN=20;
+
+function closeShortMsg(){
+  document.getElementById('shortMsgOverlay').classList.add('hidden');
+}
+function confirmShortMsg(){
+  closeShortMsg();
+  commitNote();
 }
 
 async function pinNote(){
+  const m=document.getElementById('messageInput').value.trim();
+  if(!document.getElementById('authorInput').value.trim()||!m) return;
+  // Nudge people to write a little more before pinning a very short note
+  if(m.length<MIN_MESSAGE_LEN){
+    document.getElementById('shortMsgOverlay').classList.remove('hidden');
+    return;
+  }
+  commitNote();
+}
+
+async function commitNote(){
   const ae=document.getElementById('authorInput'),me=document.getElementById('messageInput');
   const a=ae.value.trim(),m=me.value.trim();
   if(!a||!m) return;
