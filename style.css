@@ -199,6 +199,12 @@ body::before {
 .compose-inner textarea { resize: vertical; }
 .compose-inner input:focus, .compose-inner textarea:focus { border-color: var(--accent); }
 
+.char-counter {
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600;
+  color: #aaa; text-align: right; margin-top: 4px; transition: color 0.2s;
+}
+.char-counter.ok { color: var(--accent); }
+
 .actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
 .action-btn {
   padding: 8px 14px; background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px;
@@ -444,6 +450,11 @@ body::before {
 }
 .save-reply-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .save-reply-btn:not(:disabled):hover { opacity: 0.88; }
+
+.short-msg-text {
+  font-family: 'Patrick Hand', cursive; font-size: 16px; color: #555;
+  line-height: 1.45; margin: 0;
+}
 
 .hidden { display: none !important; }
 
